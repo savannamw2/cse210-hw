@@ -2,10 +2,10 @@ using System;
 
 public class Entry
 {   
-    public string _entry {get; set;} 
+    public string Response {get; set;} 
     public string Name {get; set;} 
 
-    public static string[] prompts = new string[]  {"What was your sweet and sour today?",
+    public static string[] Prompts = new string[]  {"What was your sweet and sour today?",
         "What were your thoughts after morning prayer?",
         "What were you grateful for today?",
         "What do you need to get done tomorrow?",
@@ -14,23 +14,23 @@ public class Entry
         "What are your current stresses?", 
         "What did you do today to serve others?"}; 
 
-    string current_prompt = "";
+    string CurrentPrompt= "";
     
     public void Display()
     {
         Random rnd = new Random();
-        int index = rnd.Next(prompts.Length);
-        current_prompt = prompts[index];
-        Console.WriteLine($"Prompt: {current_prompt}"); 
+        int index = rnd.Next(Prompts.Length);
+        CurrentPrompt = Prompts[index];
+        Console.WriteLine($"Prompt: {CurrentPrompt}"); 
         
     }
 
-    public string createEntry ()
+    public string CreateEntry ()
     {
         DateTime theCurrentTime = DateTime.Now;
         string dateText = theCurrentTime.ToShortDateString();
 
-        return $"\nDate: {dateText} Prompt: {current_prompt} \n Written by: {Name} \n > {_entry}\n";
+        return $"\nDate: {dateText} Prompt: {CurrentPrompt} \n Written by: {Name} \n > {Response}\n";
 
     }
 }

@@ -18,27 +18,27 @@ class Program
             Console.WriteLine("5. Exit");
             Console.Write("Choose an option: ");
 
-            string choice = Console.ReadLine();
+            string Choice = Console.ReadLine();
     
-            switch (choice)
+            switch (Choice)
             {
                 case "1":      
                     entry.Display();
                     Console.Write("> ");
-                    entry._entry = Console.ReadLine();
+                    entry.Response = Console.ReadLine();
                     Console.Write("Written By: ");
                     entry.Name = Console.ReadLine();
-                    journal.Entries.Add(entry.createEntry());
+                    journal.Entries.Add(entry.CreateEntry());
                     break;
                 case "2":
                     journal.Display();
                     break;
                 case "3":
-                    journal.saveJournal();
+                    journal.SaveJournal();
                     Console.Write("Entries are being saved to Journal!\n");
                     break;
                 case "4":
-                    journal.printJournal();
+                    journal.PrintJournal();
                     Console.Write("Entries from Journal:\n"); 
                     break;
                 case "5": 

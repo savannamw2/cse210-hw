@@ -8,29 +8,29 @@ public class Journal
 
     public void Display()
     {
-        foreach (string i in Entries)
+        foreach (string entry in Entries)
         {
-            Console.WriteLine(i);
+            Console.WriteLine(entry);
         }
 
     } 
-    public void writeToJournalFile() 
+    public void WriteToJournalFile() 
     {
-        string fileName = "journal.txt";
+        string FileName = "journal.txt";
 
-        using (StreamWriter outputFile = new StreamWriter(fileName, true))
+        using (StreamWriter outputFile = new StreamWriter(FileName, true))
         {
-            foreach(string entry in Entries)
+            foreach(string response in Entries)
             {
-                outputFile.WriteLine(entry);
+                outputFile.WriteLine(response);
             }
         }
     }
 
     public void LoadFromJournalFile() 
     {
-        string fileName = "journal.txt";
-        string[] lines = System.IO.File.ReadAllLines(fileName);
+        string FileName = "journal.txt";
+        string[] lines = System.IO.File.ReadAllLines(FileName);
 
         foreach(string line in lines)
         {
@@ -38,14 +38,14 @@ public class Journal
         }
     }
 
-    public void printJournal()
+    public void PrintJournal()
     {
         LoadFromJournalFile(); // Load entries from the file
 
     }
-    public void saveJournal()
+    public void SaveJournal()
     {
-        writeToJournalFile(); // Call the method in the constructor, if needed
+        WriteToJournalFile(); // Call the method in the constructor, if needed
     }
 
 
