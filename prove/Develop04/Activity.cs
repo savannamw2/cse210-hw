@@ -35,17 +35,13 @@ public class Activity{
     public void DisplayEnd()
     {
         Console.WriteLine("Well Done!!"); 
-
-
         Console.WriteLine($"You have completed {ActivityDuration} seconds of the {ActivityName}.");
-
     } 
 
     public void SpinnerPause(int timerDuration) 
     {
         List<string> spinner = new List<string>{"|", "/", "-", "\\", "|"};
     
-
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(timerDuration);
 
@@ -80,5 +76,18 @@ public class Activity{
 
 
     }
+
+   public void Interval(int interval)
+{
+    while (interval % 5 != 0)
+    {
+        Console.WriteLine("\nThe duration for this activity should be done in 5 second intervals.");
+        DisplayStart();
+        int duration = Int32.Parse(Console.ReadLine());
+        interval = duration;
+        ActivityDuration = interval; 
+    }
+}
+
 }
   

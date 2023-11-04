@@ -1,14 +1,14 @@
 public class ReflectionActivity : Activity
 {
-    string CurrentPrompt= "";
+    private string CurrentPrompt= "";
 
-    public static string[] Prompts = new string[]  {"Think of a time when you stood up to someone else.",
+    private static string[] Prompts = new string[]  {"Think of a time when you stood up to someone else.",
     "Think of a time when you did something really difficult.",
     "What were you grateful for today?",
     "Think of a time when you helped someone in need.",
     "Think of a time when you did something truly selfless."};
 
-    public static string[] Reflection = new string[] {"Why was this experience meaningful to you?",
+    private static string[] Reflection = new string[] {"Why was this experience meaningful to you?",
     "Have you ever done anything like this before?", 
     "How did you get started?",
     "How did you feel when it was complete?",
@@ -17,6 +17,8 @@ public class ReflectionActivity : Activity
     "What could you learn from this experience that applies to other situations?",
     "What did you learn about yourself through this experience?", 
     "How can you keep this experience in mind in the future?"};  
+
+    private List<string> Name = new List<string>();
     
     public ReflectionActivity()
     {
@@ -33,7 +35,7 @@ public class ReflectionActivity : Activity
         Console.WriteLine($"\n--- {CurrentPrompt} ---\n"); 
     } 
 
-    public void ReflectionDisplay()
+    public void ReflectionDisplay(int time)
     {
         Console.Write("When you have something on your mind, press ENTER to continue: ");
         Console.ReadLine();
@@ -41,13 +43,21 @@ public class ReflectionActivity : Activity
         Console.Write("You may begin in...");
         CountdownPause(5);
         Console.WriteLine();
+        int promptResponse = time / 5; 
+        Random rnd = new Random();
 
-        for (int i = 0; i < Reflection.Length; i++)
+        for (int i = 0; i < promptResponse; i++)
         {
-            Console.Write($"> {Reflection[i]} ");
+            Name.Add(Reflection[rnd.Next(Reflection.Length)]);
+        }
+
+        foreach (var item in Name)
+        {
+            Console.Write($"> {item} ");
             SpinnerPause(5);
             Console.WriteLine(); 
         }
+            
     }
 
     public void RunReflectionActivity()
@@ -55,7 +65,8 @@ public class ReflectionActivity : Activity
         Console.Clear();
         DisplayStart();
         int duration = Int32.Parse(Console.ReadLine());
-        ActivityDuration = duration;
+        
+        Interval(duration);
         Console.Clear();
 
         Console.Write("Get Ready...");
@@ -70,7 +81,7 @@ public class ReflectionActivity : Activity
 
         while (DateTime.Now < endTime2)
         {
-            ReflectionDisplay();
+            ReflectionDisplay(duration);
         } 
         
         DisplayEnd();

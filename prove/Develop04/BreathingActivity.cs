@@ -36,20 +36,20 @@ public class BreathingActivity : Activity
         DisplayStart();
         int duration = Int32.Parse(Console.ReadLine());
 
-        ActivityDuration = duration;
+        Interval(duration);
+
+        Console.Write("Get Ready...");
+        SpinnerPause(5);
+        Console.WriteLine();
+        Console.Clear();
 
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(duration);
 
-        Console.Clear();
-        
-        Console.Write("Get Ready...");
-        SpinnerPause(5);
-        Console.WriteLine();
-
+    
         while (DateTime.Now < endTime)
-        {
-            BreathIn();
+        {            
+            BreathIn();    
             BreathOut();
         }
         

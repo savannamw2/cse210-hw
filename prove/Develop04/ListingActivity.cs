@@ -2,7 +2,7 @@ public class ListingActivity : Activity
 {
     string CurrentListPrompt = "";
 
-    public static string[] Prompts = new string[]  {"Who are people that you appreciate?",
+    private static string[] Prompts = new string[]  {"Who are people that you appreciate?",
     "What are personal strengths of yours?",
     "Who are people that you have helped this week?",
     "When have you felt the Holy Ghost this month?",
@@ -42,10 +42,8 @@ public class ListingActivity : Activity
         DisplayStart();
         int duration = Int32.Parse(Console.ReadLine());
 
-        ActivityDuration = duration;
+        Interval(duration);
 
-        DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(duration);
 
         Console.Clear();
         
@@ -54,6 +52,9 @@ public class ListingActivity : Activity
         Console.WriteLine();
 
         PromptListDisplay();
+
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(duration);
 
         while (DateTime.Now < endTime)
         {
