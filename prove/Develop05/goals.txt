@@ -1,0 +1,2 @@
+0
+SimpleGoal:Drink more water,Have 8 glasses a day,150,False
